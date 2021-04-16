@@ -1,0 +1,9 @@
+*.meta
+*.asset
+*.mat
+*.mtl
+*.obj
+*.png
+*.xcf
+*/
+FPS*.cs
