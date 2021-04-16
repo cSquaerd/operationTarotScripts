@@ -13,11 +13,15 @@ public class VirScript : MonoBehaviour
 	public CharacterController playerCollider;
 	public Transform playerCoordinates;
 	public Transform cameraCoordinates; // read only
+	// How long printed text is shown before it is cleared
 	public float printToHUDClearDelay = 5.0f;
+	// How long printed text must wait before being printed after printToHUD() is called
+	public float printToHUDSetDelay = 0.125f;
+	// How fast (meters per second?) the player can move
 	public float moveSpeed = 6.0f;
 	// Computational Variables
 	private bool pendingClear = false;
-	private IEnumerator coroutineVar;
+	private IEnumerator setCoRoVar, clearCoRoVar;
 	private Vector2 stick;
 	private Vector3 movement;
 	private Vector3 colliderSync;
@@ -31,20 +35,34 @@ public class VirScript : MonoBehaviour
 	private const float g = -9.81f;
 	// Delayed HUD Clearing Function
 	private IEnumerator clearHUD(float delay) {
-		yield return new WaitForSeconds(delay);
+		yield return new WaitForSeconds(delay + printToHUDSetDelay);
 		HUDText.SetText("");
 		pendingClear = false;
 	}
+
+	private IEnumerator setHUDText(string text) {
+		yield return new WaitForSeconds(printToHUDSetDelay);
+		HUDText.SetText(text);
+	}
 	// Print Function for Heads-Up Display Text
-	public void printToHUD(string stuffToPrint) {
+	public void printToHUD(string stuffToPrint, float delayOverride = 5.0f) {
 		if (HUDText != null) {
-			HUDText.SetText(stuffToPrint);
+			if ( // If no override is passed but the constant doesn't match the variable who does its job
+				delayOverride == 5.0f
+				&& delayOverride != printToHUDClearDelay
+			) delayOverride = printToHUDClearDelay; // then sync up the override to the variable
 			// Good God do I love semaphores/mutexes
 			if (!pendingClear) pendingClear = true;
-			else StopCoroutine(coroutineVar);
+			else {
+				StopCoroutine(setCoRoVar);
+				StopCoroutine(clearCoRoVar);
+				HUDText.SetText("");
+			}
 
-			coroutineVar = clearHUD(printToHUDClearDelay);
-			StartCoroutine(coroutineVar);
+			setCoRoVar = setHUDText(stuffToPrint);
+			clearCoRoVar = clearHUD(delayOverride);
+			StartCoroutine(setCoRoVar);
+			StartCoroutine(clearCoRoVar);
 
 		} else print("[From printToHUD()]: " + stuffToPrint);
 	}
