@@ -3,6 +3,7 @@
 *.mat
 *.mtl
 *.obj
+*.prefab
 *.png
 *.xcf
 */
