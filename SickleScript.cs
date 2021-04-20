@@ -45,12 +45,13 @@ public class SickleScript : MonoBehaviour
 
 			sickleTeleportTo = player.playerCoordinates.position + (cameraOrientation * inFront);
 			sicklePhysics.position = sickleTeleportTo;
-			//sicklePhysics.velocity.y = 5.0f;
+			player.printToHUD("*vwoop*", 1.0f);
 			pressedOnce = false;
 		} else {
 			player.printToHUD(
 				"Your sickle is located at " + sicklePhysics.position
-				+ ".\nPress the recovery button again to teleport it in front of you."
+				+ ".\nPress the recovery button again to teleport it in front of you.",
+				3.0f
 			);
 			pressedOnce = true;
 			timeoutButtonCoRoVar = timeoutButton();
