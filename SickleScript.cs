@@ -40,8 +40,13 @@ public class SickleScript : MonoBehaviour
 			cameraOrientation = Quaternion.Euler(
 				new Vector3(0, player.cameraCoordinates.eulerAngles.y, 0)
 			);
-			inFront = new Vector3(0, player.playerCollider.height * 0.75f, 0.5f);
-			print("in recoverTool: " + inFront + " : " + cameraOrientation * inFront);
+			inFront = new Vector3(0, player.playerCollider.height * 0.75f, 1.5f);
+			print("Player is currently at: " + player.playerCoordinates.position);
+			print(
+				"in recoverTool: "
+				+ player.cameraCoordinates.eulerAngles.y + " :: "
+				+ inFront + " : " + cameraOrientation * inFront
+			);
 
 			sickleTeleportTo = player.playerCoordinates.position + (cameraOrientation * inFront);
 			sicklePhysics.position = sickleTeleportTo;
