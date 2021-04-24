@@ -6,5 +6,7 @@
 *.prefab
 *.png
 *.xcf
+*.zip
+*.ttf
 */
 FPS*.cs

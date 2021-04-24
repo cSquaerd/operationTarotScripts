@@ -9,6 +9,7 @@ public class SickleScript : MonoBehaviour
 	public SteamVR_Action_Boolean recoverAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("default", "RecoverTool");
 	public static int wheatCount = 0;
 	public static int siloCount = 0;
+	public static int carryLimit = 20;
 	public Rigidbody sicklePhysics;
 	public Interactable sickleInteractable;
 	public VirScript player;
@@ -18,14 +19,6 @@ public class SickleScript : MonoBehaviour
 	private Vector3 sickleTeleportTo;
 	private Quaternion cameraOrientation;
 	private IEnumerator timeoutButtonCoRoVar;
-
-	private void OnCollisionEnter(Collision col) {
-		if (col.collider.name == "SiloPlaceholder") {
-			siloCount += wheatCount;
-			wheatCount = 0;
-			player.printToHUD("You have harvested " + siloCount + " total wheat.");
-		}
-	}
 
 	private IEnumerator timeoutButton() {
 		yield return new WaitForSeconds(3.0f);
