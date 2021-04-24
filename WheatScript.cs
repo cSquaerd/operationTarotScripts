@@ -13,7 +13,11 @@ public class WheatScript : MonoBehaviour
 	private void OnCollisionEnter(Collision col) {
 		if (col.collider.name == "Sickle") {
 			if (SickleScript.wheatCount < SickleScript.carryLimit) {
-				player.printToHUD("Picked up a piece of wheat.");
+				player.printToHUD(
+					"You harvested a piece of wheat.\nYou can harvest "
+					+ (SickleScript.carryLimit - SickleScript.wheatCount)
+					+ " more."
+				);
 				SickleScript.wheatCount++;
 				if (harvestedMesh != null) {
 					wheatMesh.mesh = harvestedMesh;
