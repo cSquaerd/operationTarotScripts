@@ -6,20 +6,24 @@ public class WheatScript : MonoBehaviour
 {
 	public VirScript player;
 	public Mesh harvestedMesh;
+	public float harvestedBump = 0.125f;
 	private MeshFilter wheatMesh;
+	private static Vector3 harvestedScale = new Vector3(0.5f, 0.5f, 0.5f);
 
 	private void OnCollisionEnter(Collision col) {
 		if (col.collider.name == "Sickle") {
 			if (SickleScript.wheatCount < SickleScript.carryLimit) {
 				player.printToHUD("Picked up a piece of wheat.");
-				print("Picked up a piece of wheat.");
 				SickleScript.wheatCount++;
 				if (harvestedMesh != null) {
 					wheatMesh.mesh = harvestedMesh;
+					Transform wheatTransform = this.gameObject.GetComponent<Transform>();
+					wheatTransform.localScale = harvestedScale;
+					wheatTransform.Translate(new Vector3(0.0f, harvestedBump, 0.0f));
 					this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 				} else Destroy(this.gameObject);
 			} else {
-				player.printToHUD("You're carrying too much wheat, go deposit it at the silo.");
+				player.printToHUD("You're carrying too much wheat, go deposit it at the shed.");
 			}
 		}
 	}

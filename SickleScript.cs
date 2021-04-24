@@ -34,21 +34,20 @@ public class SickleScript : MonoBehaviour
 				new Vector3(0, player.cameraCoordinates.eulerAngles.y, 0)
 			);
 			inFront = new Vector3(0, player.playerCollider.height * 0.75f, 1.5f);
-			print("Player is currently at: " + player.playerCoordinates.position);
+/*			print("Player is currently at: " + player.playerCoordinates.position);
 			print(
 				"in recoverTool: "
 				+ player.cameraCoordinates.eulerAngles.y + " :: "
 				+ inFront + " : " + cameraOrientation * inFront
 			);
-
+*/
 			sickleTeleportTo = player.playerCoordinates.position + (cameraOrientation * inFront);
 			sicklePhysics.position = sickleTeleportTo;
 			player.printToHUD("*vwoop*", 1.0f);
 			pressedOnce = false;
 		} else {
 			player.printToHUD(
-				"Your sickle is located at " + sicklePhysics.position
-				+ ".\nPress the recovery button again to teleport it in front of you.",
+				"Press the recovery button again to teleport your sickle to in front of you.",
 				3.0f
 			);
 			pressedOnce = true;
