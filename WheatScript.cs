@@ -15,9 +15,9 @@ public class WheatScript : MonoBehaviour
 		if (col.collider.name == "Sickle") {
 			if (SickleScript.wheatCount < SickleScript.carryLimit) {
 				player.printToHUD(
-					"You harvested a piece of wheat.\nYou can harvest "
+					"[You harvested a piece of wheat.\nYou can harvest "
 					+ (SickleScript.carryLimit - SickleScript.wheatCount - 1)
-					+ " more."
+					+ " more.]"
 				);
 				SickleScript.wheatCount++;
 				if (harvestedMesh != null) {
@@ -28,7 +28,7 @@ public class WheatScript : MonoBehaviour
 					this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 				} else Destroy(this.gameObject);
 			} else {
-				player.printToHUD("You're carrying too much wheat, go deposit it at the shed.");
+				player.printToHUD("[You're carrying too much wheat, go deposit it at the shed.]");
 			}
 			messor.resetDillyDally();
 		}

@@ -12,8 +12,13 @@ public class ShedScript : MonoBehaviour
 		if (col.name == "Sickle") {
 			SickleScript.siloCount += SickleScript.wheatCount;
 			SickleScript.wheatCount = 0;
-			player.printToHUD("You have harvested " + SickleScript.siloCount + " total wheat.");
-			messor.resetDillyDally();
+			player.printToHUD("[You have harvested " + SickleScript.siloCount + " total wheat.]");
+			if (SickleScript.siloCount >= 12 && !messor.getRevealed()) {
+				messor.doReveal();
+			} else if (!messor.getRevealed()) {
+				messor.commentateProgress();
+				messor.resetDillyDally();
+			}
 		}
 	}
 

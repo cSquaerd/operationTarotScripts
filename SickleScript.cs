@@ -28,7 +28,7 @@ public class SickleScript : MonoBehaviour
 
 	private void recoverTool() {
 		if (sickleInteractable.attachedToHand) {
-			player.printToHUD("You're holding your sickle already!");
+			player.printToHUD("[You're holding your sickle already!]");
 		} else if (pressedOnce) {
 			StopCoroutine(timeoutButtonCoRoVar);
 			cameraOrientation = Quaternion.Euler(
@@ -48,7 +48,7 @@ public class SickleScript : MonoBehaviour
 			pressedOnce = false;
 		} else {
 			player.printToHUD(
-				"Press the recovery button again to teleport your sickle to in front of you.",
+				"[Press the recovery button again to teleport your sickle to in front of you.]",
 				3.0f
 			);
 			pressedOnce = true;
