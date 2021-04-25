@@ -15,7 +15,7 @@ public class WheatScript : MonoBehaviour
 			if (SickleScript.wheatCount < SickleScript.carryLimit) {
 				player.printToHUD(
 					"You harvested a piece of wheat.\nYou can harvest "
-					+ (SickleScript.carryLimit - SickleScript.wheatCount)
+					+ (SickleScript.carryLimit - SickleScript.wheatCount - 1)
 					+ " more."
 				);
 				SickleScript.wheatCount++;

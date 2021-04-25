@@ -21,6 +21,8 @@ public class VirScript : MonoBehaviour
 	public float moveSpeed = 6.0f;
 	// Computational Variables
 	private bool pendingClear = false;
+	private bool printingLocked = false;
+	private string printingKey;
 	private IEnumerator setCoRoVar, clearCoRoVar;
 	private Vector2 stick;
 	private Vector3 movement;
@@ -44,8 +46,18 @@ public class VirScript : MonoBehaviour
 		yield return new WaitForSeconds(printToHUDSetDelay);
 		HUDText.SetText(text);
 	}
+
+	// Printing Locking/Unlocking functions
+	public void lockPrinting(string key) {
+		printingLocked = true;
+		printingKey = key;
+	}
+	public void unlockPrinting() {
+		printingLocked = false;
+	}
 	// Print Function for Heads-Up Display Text
-	public void printToHUD(string stuffToPrint, float delayOverride = 5.0f) {
+	public void printToHUD(string stuffToPrint, float delayOverride = 5.0f, string key = "") {
+		if (printingLocked && key != printingKey) return;
 		if (HUDText != null) {
 			if ( // If no override is passed but the constant doesn't match the variable who does its job
 				delayOverride == 5.0f
@@ -70,7 +82,7 @@ public class VirScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start() {
 		//HUDText = (TextMeshProUGUI) GameObject.Find("HUDText").GetComponent(typeof(TextMeshProUGUI));
-		printToHUD("Hello world.");
+		printToHUD("");
 	}
 
 	// Update is called once per frame
