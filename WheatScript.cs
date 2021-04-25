@@ -5,6 +5,7 @@ using UnityEngine;
 public class WheatScript : MonoBehaviour
 {
 	public VirScript player;
+	public MessorScript messor;
 	public Mesh harvestedMesh;
 	public float harvestedBump = 0.125f;
 	private MeshFilter wheatMesh;
@@ -29,6 +30,7 @@ public class WheatScript : MonoBehaviour
 			} else {
 				player.printToHUD("You're carrying too much wheat, go deposit it at the shed.");
 			}
+			messor.resetDillyDally();
 		}
 	}
 	// Start is called before the first frame update

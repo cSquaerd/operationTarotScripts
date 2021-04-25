@@ -13,6 +13,7 @@ public class SickleScript : MonoBehaviour
 	public Rigidbody sicklePhysics;
 	public Interactable sickleInteractable;
 	public VirScript player;
+	public MessorScript messor;
 
 	private bool pressedOnce;
 	private Vector3 inFront;
@@ -54,6 +55,7 @@ public class SickleScript : MonoBehaviour
 			timeoutButtonCoRoVar = timeoutButton();
 			StartCoroutine(timeoutButtonCoRoVar);
 		}
+		messor.resetDillyDally();
 	}
 
     // Start is called before the first frame update
@@ -64,5 +66,9 @@ public class SickleScript : MonoBehaviour
     // Update is called once per frame
     void Update() {
 		if (recoverAction.GetStateDown(SteamVR_Input_Sources.Any)) recoverTool();
+
+		if (sickleInteractable.attachedToHand && messor.getFirstSicklePickup()) {
+			messor.delegateTask();
+		}
 	}
 }

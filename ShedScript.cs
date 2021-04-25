@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShedScript : MonoBehaviour
 {
 	public VirScript player;
+	public MessorScript messor;
 
 	// Disencumbers the player
 	private void OnTriggerEnter(Collider col) {
@@ -12,6 +13,7 @@ public class ShedScript : MonoBehaviour
 			SickleScript.siloCount += SickleScript.wheatCount;
 			SickleScript.wheatCount = 0;
 			player.printToHUD("You have harvested " + SickleScript.siloCount + " total wheat.");
+			messor.resetDillyDally();
 		}
 	}
 

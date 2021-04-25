@@ -14,6 +14,11 @@ public class MessorScript : MonoBehaviour
 		"But it will do you no good lying about in the fields. They await you, pilgrim.",
 		"When you are ready, proceed to the shed to the south and find my instrument..."
 	};
+	public static string[] taskMessages = {
+		"Very good, pilgrim. You are ready for your task.",
+		"Reap for me CENTVM ET VIGINTI stalks of wheat,",
+		"Then I shall reveal to you a minor wonder..."
+	};
 	public static string[] dillyDallyIntro = {
 		"Linger not longer, pilgrim. The grain awaits. Find my instrument.",
 		"The grain continues to wait, pilgrim. Hurry to the shed!",
@@ -26,8 +31,9 @@ public class MessorScript : MonoBehaviour
 	};
 
 	private bool introduced;
-	private bool firstSiloCheck;
+	private bool firstSicklePickup;
 	private bool revealed;
+	private IEnumerator majorCoRoVar;
 	private IEnumerator dillyDallyCoRoVar;
 	private static string key = "Messor";
 
@@ -47,10 +53,23 @@ public class MessorScript : MonoBehaviour
 		resetDillyDally();
 	}
 
+	private IEnumerator task() {
+		player.lockPrinting(key);
+
+		for (int i = 0; i < 3; i++) {
+			player.printToHUD(taskMessages[i], 4.5f, key);
+			yield return new WaitForSeconds(4.5f);
+		}
+
+		yield return new WaitForSeconds(1.5f);
+		player.unlockPrinting();
+		resetDillyDally();
+	}
+
 	private IEnumerator dillyDally() {
 		yield return new WaitForSeconds(30.0f);
 
-		if (firstSiloCheck) {
+		if (firstSicklePickup) {
 			player.printToHUD(dillyDallyIntro[Random.Range(0, 3)]);
 		} else if (!revealed) {
 			player.printToHUD(dillyDallyWorking[Random.Range(0, 3)]);
@@ -60,17 +79,29 @@ public class MessorScript : MonoBehaviour
 	}
 
 	public void resetDillyDally() {
+		print("resetting dilly-dally messages...");
 		if (dillyDallyCoRoVar != null) StopCoroutine(dillyDallyCoRoVar);
 		dillyDallyCoRoVar = dillyDally();
 		StartCoroutine(dillyDallyCoRoVar);
 	}
 
+	public bool getFirstSicklePickup() { return firstSicklePickup; }
+
+	public void delegateTask() {
+		firstSicklePickup = false;
+		StopCoroutine(majorCoRoVar);
+		player.unlockPrinting();
+		majorCoRoVar = task();
+		StartCoroutine(majorCoRoVar);
+	}
+
     // Start is called before the first frame update
     void Start() {
 		introduced = false;
-		firstSiloCheck = true;
+		firstSicklePickup = true;
 		revealed = false;
-		StartCoroutine(welcome());
+		majorCoRoVar = welcome();
+		StartCoroutine(majorCoRoVar);
 	}
 
     // Update is called once per frame
