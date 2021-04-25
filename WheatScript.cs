@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Written by Charlie Cook
 public class WheatScript : MonoBehaviour
 {
 	public VirScript player;
@@ -20,11 +20,12 @@ public class WheatScript : MonoBehaviour
 					+ " more.]"
 				);
 				SickleScript.wheatCount++;
-				if (harvestedMesh != null) {
+				if (harvestedMesh != null) { // Change this wheat instance's model and set its geometry
 					wheatMesh.mesh = harvestedMesh;
 					Transform wheatTransform = this.gameObject.GetComponent<Transform>();
 					wheatTransform.localScale = harvestedScale;
 					wheatTransform.Translate(new Vector3(0.0f, harvestedBump, 0.0f));
+					// Disable this instance's collider so it cannot be harvested more than once
 					this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 				} else Destroy(this.gameObject);
 			} else {

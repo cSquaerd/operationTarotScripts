@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
-
+// Written by Charlie Cook
 public class SickleScript : MonoBehaviour
 {
 	public SteamVR_Action_Boolean recoverAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("default", "RecoverTool");

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Written by Charlie Cook
 public class ShedScript : MonoBehaviour
 {
 	public VirScript player;
@@ -13,7 +13,8 @@ public class ShedScript : MonoBehaviour
 			SickleScript.siloCount += SickleScript.wheatCount;
 			SickleScript.wheatCount = 0;
 			player.printToHUD("[You have harvested " + SickleScript.siloCount + " total wheat.]");
-			if (SickleScript.siloCount >= 12 && !messor.getRevealed()) {
+			
+			if (SickleScript.siloCount >= 120 && !messor.getRevealed()) {
 				messor.doReveal();
 			} else if (!messor.getRevealed()) {
 				messor.commentateProgress();

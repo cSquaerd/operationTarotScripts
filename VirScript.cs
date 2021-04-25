@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
-
+// Written by Charlie Cook
 public class VirScript : MonoBehaviour
 {
 	public SteamVR_Action_Vector2 walkAction = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("default", "Walk");
