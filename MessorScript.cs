@@ -10,11 +10,16 @@ public class MessorScript : MonoBehaviour
 
 	// Every message to be printed in the HUD
 	public static string welcomeMessage = "So, you're finally awake pilgrim. Splendid!";
+	// POSTREMO EXCITARE PEREGRINATOR. SPLENDIDUS!
 	public static string[] introMessages = {
 		"Be not alarmed from not seeing anyone. I am Messor, he who reaps.",
+		// NON TREPIDARE VIDERE NEMO UNUS. EGO MESSOR, DEUS MESSORIS.
 		"Not souls, pilgrim, grain; And there is plenty here for you and your kind.",
+		// NON ANIMUS, PEREGRINATOR. FRUMENTUM. ET IBI ABUNDATIA HIC AD TE ET AMICI.
 		"But it will do you no good lying about in the fields. They await you, pilgrim.",
+		// IS NON PRODESSE TE IN AGRI. EA EXPECTANT TE, PEREGRINATOR.
 		"When you are ready, proceed to the shed to the south and find my instrument..."
+		// QUANDO TU PARATUS, AD MERIDIANA TUGURIUM ET INVENIRE MEUS INSTRUMENTUM.
 	};
 	public static string[] taskMessages = {
 		"Very good, pilgrim. You are ready for your task.",
