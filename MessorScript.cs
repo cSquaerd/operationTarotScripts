@@ -44,13 +44,21 @@ public class MessorScript : MonoBehaviour
 	};
 	public static string[] dillyDallyIntro = {
 		"Linger not longer, pilgrim. The grain awaits. Find my instrument.",
+		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXPECTANT. INVENIAM MEUM INSTRUMENTUM.
 		"The grain continues to wait, pilgrim. Hurry to the shed!",
+		// FRUMENTA CONTINUES EXPECTARE, PEREGRINATOR. ACCELERARE AD TUGURIO!
 		"You'll find little else to do with your time here, pilgrim. Come now, find my instrument."
+		// INVENIAM MODICUM ALIUM FACERE CUM TUUM TEMPUS, PEREGRINATOR.
+		// VENIRE NUNC, INVENIAM MEUM INSTRUMENTUM.
 	};
 	public static string[] dillyDallyWorking = {
 		"Linger not longer, pilgrim. The grain awaits harvesting.",
+		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXPECTANT METI.
 		"The grain continues to wait, pilgrim. Swing swiftly my instrument!",
+		// FRUMENTA CONTINUES EXPECTARE, PEREGRINATOR. AGITARE CITO MEUM INSTRUMENTUM!
 		"You'll find little else to do with your time here, pilgrim. Come now, reap the harvest."
+		// INVENIAM MODICUM ALIUM FACERE CUM TUUM TEMPUS, PEREGRINATOR.
+		// VENIRE NUNC, MESSIS SEGES.
 	};
 	// Control and State variables
 	private bool introduced;
