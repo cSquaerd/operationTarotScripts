@@ -7,6 +7,15 @@ public class MessorScript : MonoBehaviour
 	// Assign these to the non-active cards and the Player's CharacterController
 	public GameObject[] cards = new GameObject[5];
 	public VirScript player;
+	public AudioSource narrator;
+
+	public AudioClip welcomeAudio;
+	public AudioClip[] introAudio = new AudioClip[4];
+	public AudioClip[] taskAudio = new AudioClip[3];
+	public AudioClip[] progressAudio = new AudioClip[3];
+	public AudioClip[] revealAudio = new AudioClip[3];
+	public AudioClip[] dillyAudio = new AudioClip[3];
+	public AudioClip[] dallyAudio = new AudioClip[3];
 
 	// Every message to be printed in the HUD
 	public static string welcomeMessage = "So, you're finally awake pilgrim. Splendid!";
@@ -71,18 +80,27 @@ public class MessorScript : MonoBehaviour
 	private IEnumerator dillyDallyCoRoVar;
 	private IEnumerator progressCoRoVar;
 	private static string key = "Messor";
+	// Audio Playing Wrapper
+	private void playLine(AudioClip line) {
+		narrator.Stop();
+		narrator.clip = line;
+		narrator.Play();
+	}
 	// Initial routine (invoked from Start())
 	private IEnumerator welcome() {
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(3.0f);
 
 		player.lockPrinting(key); // Locking prevents prints from other events ruining the narration
-		player.printToHUD(welcomeMessage, 6.0f, key);
+		playLine(welcomeAudio);
+		player.printToHUD(welcomeMessage, welcomeAudio.length, key);
+		yield return new WaitForSeconds(welcomeAudio.length + 0.5f);
 		for (int i = 0; i < 4; i++) {
-			yield return new WaitForSeconds(6.0f);
-			player.printToHUD(introMessages[i], 6.0f, key);
+			playLine(introAudio[i]);
+			player.printToHUD(introMessages[i], introAudio[i].length, key);
+			yield return new WaitForSeconds(introAudio[i].length + 0.5f);
 		}
 
-		yield return new WaitForSeconds(4.0f);
+		yield return new WaitForSeconds(3.0f);
 		introduced = true;
 		player.unlockPrinting();
 		resetDillyDally();
@@ -92,8 +110,9 @@ public class MessorScript : MonoBehaviour
 		player.lockPrinting(key);
 
 		for (int i = 0; i < 3; i++) {
-			player.printToHUD(taskMessages[i], 4.5f, key);
-			yield return new WaitForSeconds(4.5f);
+			playLine(taskAudio[i]);
+			player.printToHUD(taskMessages[i], taskAudio[i].length, key);
+			yield return new WaitForSeconds(taskAudio[i].length + 0.5f);
 		}
 
 		yield return new WaitForSeconds(1.5f);
@@ -103,36 +122,42 @@ public class MessorScript : MonoBehaviour
 	// Wheat tally routine (just some flavor text)
 	private IEnumerator progress() {
 		if (revealed) yield break;
-		yield return new WaitForSeconds(3.0f);
-		player.printToHUD(progressMessages[Random.Range(0, 3)], 6.0f);
+		int i = Random.Range(0, 3);
+		yield return new WaitForSeconds(progressAudio[i].length / 2);
+		playLine(progressAudio[i]);
+		player.printToHUD(progressMessages[i], progressAudio[i].length);
 	}
 	// Reveal routine (invoked when more than 120 wheat has been deposited to the shed/silo)
 	private IEnumerator reveal() {
 		player.lockPrinting(key);
-		yield return new WaitForSeconds(4.0f);
+		yield return new WaitForSeconds(3.0f);
 
 		for (int i = 0; i < 5; i++) { // Activates the cards that lead to other scenes
 			if (cards[i] != null) cards[i].SetActive(true);
 		}
 
 		for (int i = 0; i < 3; i++) {
-			player.printToHUD(revealMessages[i], 4.5f, key);
-			yield return new WaitForSeconds(4.5f);
+			playLine(revealAudio[i]);
+			player.printToHUD(revealMessages[i], revealAudio[i].length, key);
+			yield return new WaitForSeconds(revealAudio[i].length + 0.5f);
 		}
 
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(3.0f);
 		player.unlockPrinting();
 	}
 	// Reminder to the player to play the game
 	// (happens every 30 seconds if no events occur here or in other scripts)
 	private IEnumerator dillyDally() {
 		if (revealed) yield break;
+		int i = Random.Range(0, 3);
 		yield return new WaitForSeconds(30.0f);
 
 		if (firstSicklePickup) {
-			player.printToHUD(dillyDallyIntro[Random.Range(0, 3)], 6.0f);
+			playLine(dillyAudio[i]);
+			player.printToHUD(dillyDallyIntro[i], dillyAudio[i].length);
 		} else if (!revealed) {
-			player.printToHUD(dillyDallyWorking[Random.Range(0, 3)], 6.0f);
+			playLine(dallyAudio[i]);
+			player.printToHUD(dillyDallyWorking[i], dallyAudio[i].length);
 		}
 
 		if (!revealed) resetDillyDally(); //"Tail Recursive" call to queue up the next run
