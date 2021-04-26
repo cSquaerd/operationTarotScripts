@@ -23,13 +23,19 @@ public class MessorScript : MonoBehaviour
 	};
 	public static string[] taskMessages = {
 		"Very good, pilgrim. You are ready for your task.",
+		// PERBONUM PEREGRINATOR. TE PARATUS AD OPUS.
 		"Reap for me CENTVM ET VIGINTI stalks of wheat,",
+		// MESSIS AD MEUM --- CULMOS TRITICUM,
 		"Then I shall reveal to you a minor wonder..."
+		// TUM EGO APERIRE AD TE PARVUS MIRACULUM.
 	};
 	public static string[] progressMessages = {
 		"Good work, pilgrim. Keep to your pace.",
+		// BONUM LABOR, PEREGRINATOR. TENERE TUUS VELOCITAS.
 		"Still more reaping remains, pilgrim.",
+		// ADHUC PLUS MESSIS RELIQUIAE, PEREGRINATOR.
 		"Your tally grows, pilgrim. Soon it will be satisfactory."
+		// TUUS RATIO AUGERIS, PEREGRINATOR. MOX ERIT SATIS.
 	};
 	public static string[] revealMessages = {
 		"Enough! You have labored enough, pilgrim.",
