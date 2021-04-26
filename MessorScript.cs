@@ -17,7 +17,7 @@ public class MessorScript : MonoBehaviour
 		"Not souls, pilgrim, grain; And there is plenty here for you and your kind.",
 		// NON ANIMUS, PEREGRINATOR. FRUMENTUM. ET IBI ABUNDATIA HIC AD TE ET AMICI.
 		"But it will do you no good lying about in the fields. They await you, pilgrim.",
-		// IS NON PRODESSE TE IN AGRI. EA EXPECTANT TE, PEREGRINATOR.
+		// IS NON PRODESSE TE IN AGRI. EA EXSPECTANT TE, PEREGRINATOR.
 		"When you are ready, proceed to the shed to the south and find my instrument..."
 		// QUANDO TU PARATUS, AD MERIDIANA TUGURIUM ET INVENIRE MEUS INSTRUMENTUM.
 	};
@@ -39,23 +39,26 @@ public class MessorScript : MonoBehaviour
 	};
 	public static string[] revealMessages = {
 		"Enough! You have labored enough, pilgrim.",
+		// SATIS! TU LABORAVERAS SATIS, PEREGRINATOR.
 		"Return now to the main hall, and gaze upon the log table;",
+		// REFERRE NUNC AD PRIMUM ATRIUM ET INTUERI SUPER STIPES MENSA.
 		"My wonder awaits you there. Farewell, pilgrim."
+		// MEUM MIRACULUM EXPECTAT IBI TIBI. SALVETE, PEREGRINATOR.
 	};
 	public static string[] dillyDallyIntro = {
 		"Linger not longer, pilgrim. The grain awaits. Find my instrument.",
-		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXPECTANT. INVENIAM MEUM INSTRUMENTUM.
+		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXSPECTANT. INVENIAM MEUM INSTRUMENTUM.
 		"The grain continues to wait, pilgrim. Hurry to the shed!",
-		// FRUMENTA CONTINUES EXPECTARE, PEREGRINATOR. ACCELERARE AD TUGURIO!
+		// FRUMENTA CONTINUES EXSPECTARE, PEREGRINATOR. ACCELERARE AD TUGURIO!
 		"You'll find little else to do with your time here, pilgrim. Come now, find my instrument."
 		// INVENIAM MODICUM ALIUM FACERE CUM TUUM TEMPUS, PEREGRINATOR.
 		// VENIRE NUNC, INVENIAM MEUM INSTRUMENTUM.
 	};
 	public static string[] dillyDallyWorking = {
 		"Linger not longer, pilgrim. The grain awaits harvesting.",
-		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXPECTANT METI.
+		// NO MORARI LONGIUS, PEREGRINATOR. FRUMENTA EXSPECTANT METI.
 		"The grain continues to wait, pilgrim. Swing swiftly my instrument!",
-		// FRUMENTA CONTINUES EXPECTARE, PEREGRINATOR. AGITARE CITO MEUM INSTRUMENTUM!
+		// FRUMENTA CONTINUES EXSPECTARE, PEREGRINATOR. AGITARE CITO MEUM INSTRUMENTUM!
 		"You'll find little else to do with your time here, pilgrim. Come now, reap the harvest."
 		// INVENIAM MODICUM ALIUM FACERE CUM TUUM TEMPUS, PEREGRINATOR.
 		// VENIRE NUNC, MESSIS SEGES.
