@@ -22,4 +22,6 @@ Once you reach the limit, Messor will reveal a "wonder" to you, and you can proc
 All of these scripts were written line-by-line by me, Charles "Charlie" Cook, though for **VirScript.cs** I did follow along with a video by Youtube User "VR With Andrew".
 That video is [here](https://www.youtube.com/watch?v=MvuI6fspGMM).
 
+For those looking for the project folder, a zip archive of it is on [Google Drive](https://drive.google.com/drive/folders/15EYtJ9NgLQXDSZcHT8DpkUXgEkK1Snxn?usp=sharing)
+
 EOF
