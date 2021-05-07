@@ -9,6 +9,8 @@ In my scene, Temperance (based on the eponymous tarot card), you play a pilgrim 
 You do this by picking up a sickle, which is a SteamVR interactable object, and colliding it into the models of wheat to "cut" them.
 Once you reach the limit, Messor will reveal a "wonder" to you, and you can proceed to one of the other scenes made by my groupmates.
 
+For a video overview/playthrough of the project, [click here](https://drive.google.com/file/d/10ElLvxNHsqzMj8kj_tmrDz92wU-k51c5/view?usp=sharing).
+
 ### How To Play (the actual game)
 
 1. You can download a build of my scene only from my personal Nextcloud repository, linked [here](https://cculysses.com/nextcloud/index.php/s/fAAgzWzc49BJBrT)
@@ -22,6 +24,6 @@ Once you reach the limit, Messor will reveal a "wonder" to you, and you can proc
 All of these scripts were written line-by-line by me, Charles "Charlie" Cook, though for **VirScript.cs** I did follow along with a video by Youtube User "VR With Andrew".
 That video is [here](https://www.youtube.com/watch?v=MvuI6fspGMM).
 
-For those looking for the project folder, a zip archive of it is on [Google Drive](https://drive.google.com/drive/folders/15EYtJ9NgLQXDSZcHT8DpkUXgEkK1Snxn?usp=sharing)
+For those looking for the project folder, a zip archive of it is on [Google Drive](https://drive.google.com/drive/folders/15EYtJ9NgLQXDSZcHT8DpkUXgEkK1Snxn?usp=sharing).
 
 EOF
